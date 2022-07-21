@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Input Order Pengiriman</title>
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Input Order Pengiriman</h2>
+      </div>
+
+      <div class="row g-5">
+        <div class="col">
+          <form class="needs-validation" novalidate="" action="confirm.html" method="get">
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="namapengirim" class="form-label">Nama Lengkap (Pengirim)</label>
+                <input type="text" class="form-control" id="namapengirim" name="namapengirim" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid name is required.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="notelp_pengirim" class="form-label">No telp (Pengirim)</label>
+                <input type="tel" class="form-control" id="notelp_pengirim" name="notelp_pengirim" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid number is required.
+                </div>
+
+              <div class="col-md-5">
+                <label for="negara_pengirim" class="form-label">Asal Negara (Pengirim)</label>
+                <select class="form-select" id="negara_pengirim" name="negara_pengirim" required>
+                  <option value="">Pilih...</option>
+                  <option>United States</option>
+                  <option>Indonesia</option>
+                  <option>Russia</option>
+                  <option>Singapore</option>
+                  <option>China</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+
+<br>
+<br>
+             
+              <div class="col-12">
+                <label for="namapenerima" class="form-label">Nama Lengkap (Penerima)</label>
+                <input type="text" class="form-control" id="namapenerima" name="namapenerima" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid name is required.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="notelp_penerima" class="form-label">No telp (Penerima)</label>
+                <input type="tel" class="form-control" id="notelp_penerima" name="notelp_penerima" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid number is required.
+                </div>
+
+              <div class="col-md-5">
+                <label for="negara_penerima" class="form-label">Asal Negara (Penerima)</label>
+                <select class="form-select" id="negara_penerima" name="negara_penerima" required>
+                  <option value="">Pilih...</option>
+                  <option>United States</option>
+                  <option>Indonesia</option>
+                  <option>Russia</option>
+                  <option>Singapore</option>
+                  <option>China</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              
+
+<br>
+<br>
+              <div class="col-12">
+                <label for="namabarang" class="form-label">Nama Barang</label>
+                <input type="text" class="form-control" id="namabarang" name="namabarang" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid name is required.
+                </div>
+              </div>
+
+
+              <div class="col-3">
+                <label for="beratbarang" class="form-label">Berat Barang (Kg)</label>
+                <input type="number" class="form-control" id="beratbarang" name="beratbarang" min="1" max="100"
+                  required>
+                <div class="invalid-feedback">
+                  Please enter your valid number of choice (1-100).
+                </div>
+              </div>
+            </div>
+
+<br>            
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio1" name="paket" value="Reguler" checked>Reguler
+                <label class="form-check-label" for="radio1"></label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="paket" value="Express">Express
+                <label class="form-check-label" for="radio2"></label>
+              </div>
+
+
+            <hr class="my-4">
+
+            <div class="col-md-12 text-center">
+                <button type="submit" onclick=" displayRadioValue()" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© 2022 Company Name</p>
+    </footer>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Cara mengimpor JS dari file -->
+  <script src="form-validation.js"></script>
+
+  <script>
+    // Deklarasi function untuk trigger Country.
+    function getStates() {
+      let country = document.getElementById('country').value;
+      let items = [];
+
+      // Secara dinamis sesuai pilihan user, pilihan States disesuaikan.
+      switch (country) {
+        case 'United States':
+          items = ['New York', 'Oregon', 'Texas', 'New Jersey'];
+          break;
+        case 'Indonesia':
+          items = ['Jawa Barat', 'Jawa Tengah', 'Jawa Timur', 'Kalimantan Timur', 'Bali'];
+          break;
+        case 'Russia':
+          items = ['Moscow', 'Novgorod', 'Voronezh', 'Irkutsk'];
+          break;
+        default:
+          items = ['Pick country first'];
+      }
+
+      // Persiapan memodifikasi elemen target
+      const select = document.getElementById('state');
+
+      // Membersihkan seluruh child dari elemen target
+      while (select.firstChild) {
+        select.firstChild.remove()
+      }
+
+      // Secara iteratif membuat elemen child baru untuk target
+      for (let item of items) {
+        // Membuat elemen baru
+        const opt = document.createElement('option');
+
+        // Modifikasi elemen baru
+        opt.innerHTML = item;
+        if (item === 'Pick country first') opt.value = '';
+
+        // Sisipkan elemen baru ke elemen target
+        select.appendChild(opt);
+      }
+    }
+
+    // Deklarasi function untuk toggle checkbox.
+    function toggleCheckbox() {
+      const toggle = document.getElementById('toggle-special');
+      const enableMultiply = document.getElementById('enable-multiply');
+
+      enableMultiply.disabled = !toggle.checked;
+      if (!toggle.checked) enableMultiply.checked = false;
+    }
+
+    // Setting event listener pada target elemen.
+    document.getElementById('country').addEventListener('change', getStates);
+    document.getElementById('toggle-special').addEventListener('change', toggleCheckbox);
+
+    // Trik untuk membatasi input tanggal hingga tanggal hari ini
+    document.getElementById('dob').max = new Date().toISOString().split('T')[0];
+  </script>
+
+<div id="result"></div>
+<script>
+  function displayRadioValue() {
+      var ele = document.getElementsByName('paket');
+        
+      for(i = 0; i < ele.length; i++) {
+          if(ele[i].checked)
+          document.getElementById("result").innerHTML
+                  = "Paket: "+ele[i].value;
+      }
+  }
+</script>
+</body>
+
+</html>
