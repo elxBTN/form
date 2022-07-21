@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <title>Konfirmasi Order</title>
+
+  <style>
+    hr {
+      color: #0000004f;
+      margin-top: 5px;
+      margin-bottom: 5px
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>CheckOut</h2>
+      </div>
+
+      <div class="row g-5">
+        <div class="col">
+          <div class="container mt-2 mb-3">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+                <div class="card">
+                  <div class="d-flex flex-row p-2"> <img src=""
+                      width="48">
+                    <div class="d-flex flex-column"> <strong>Details</strong>
+                      <small>NOT-011</small>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="table-responsive p-2">
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <!-- Trik untuk menyisipkan output menggunakan atribut ID dan elemen span -->
+                            <b>Pengirim</b><br>
+                            Nama    : <span id="namapengirim"></span><br> 
+                            No Telp : <span id="notelp_pengirim"></span><br>
+                            Negara  : <span id="negara_pengirim"></span><br><br>
+
+                            <b>Penerima</b><br>
+                            Nama : <span id="namapenerima"></span><br>
+                            No Telp : <span id="notelp_penerima"></span><br>
+                            Negara : <span id="negara_penerima"></span><br><br>
+                            
+                            <b>Kiriman</b><br>
+                            Nama Barang : <span id="namabarang"></span><br>
+                            Berat Barang : <span id="beratbarang"></span>(Kg)<br>
+                            Paket Kiriman : <span id="paket"></span><br>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+                  <div class="table-responsive p-2">
+                    <table class="table table-borderless">
+                      <tbody>
+                        <tr>
+                          <td><strong>Details</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Chosen number</td>
+                          <td id="number"></td>
+                        </tr>
+                        <tr>
+                          <td>Multiply by 100?</td>
+                          <td id="multiply-enabled"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+            <div class="col-md-12 text-center">
+               <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCentered">
+    Konfirmasi
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal" id="exampleModalCentered" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenteredLabel">Konfirmasi Order Pengiriman</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah data sudah sesuai?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">BATAL</button>
+          <button type="button" class="btn btn-primary">YA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© 2022 Company Name</p>
+    </footer>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Trik untuk mendapatkan value dari form
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+    // Cara untuk menyisipkan value ke dalam elemen HTML
+    document.getElementById('namapengirim').innerHTML = params.namapengirim ?? '-';
+    document.getElementById('notelp_pengirim').innerHTML = params.notelp_pengirim ?? '-';
+    document.getElementById('negara_pengirim').innerHTML = params.negara_pengirim ?? '-';
+    document.getElementById('namapenerima').innerHTML = params.namapenerima ?? '-';
+    document.getElementById('notelp_penerima').innerHTML = params.notelp_penerima ?? '-';
+    document.getElementById('negara_penerima').innerHTML = params.negara_penerima ?? '-';
+    document.getElementById('namabarang').innerHTML = params.namabarang ?? '-';
+    document.getElementById('beratbarang').innerHTML = params.beratbarang ?? '-';
+    document.getElementById('paket').innerHTML = params.paket ?? '-';
+
+    
+
+    // Manipulasi data
+    const dobArr = params.dob.split('-'); // Data dari input tanggal berupa teks dengan format 'YYYY-MM-DD'
+    const dob = new Date(dobArr[0], dobArr[1], dobArr[2]); // Date(year, month, date)
+    const getAge = birthDate => Math.floor((Date.now() - new Date(birthDate).getTime()) / 3.15576e+10); // Trik untuk mendapatkan umur berdasarkan tanggal di masa lalu
+
+    document.getElementById('age').innerHTML = `${getAge(dob)} tahun`;
+
+    const chosenNumber = params.chosenNumber * (params.enableMultiply === 'on' ? 100 : 1); // Data dari input checkbox berupa teks 'on' jika checkbox dicentang
+    document.getElementById('number').innerHTML = chosenNumber;
+    document.getElementById('multiply-enabled').innerHTML = params.enableMultiply === 'on' ? '🟢' : '❌';
+  </script>
+</body>
+
+</html>
